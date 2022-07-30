@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Parkings</h1>
+<b><%= link_to "New parking", new_parking_path %></b>
 
 <div id="parkings">
   <% @parkings.each do |parking| %>
@@ -11,4 +12,3 @@
   <% end %>
 </div>
 
-<%= link_to "New parking", new_parking_path %>

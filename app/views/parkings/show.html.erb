@@ -4,7 +4,20 @@
 
 <div>
   <%= link_to "Edit this parking", edit_parking_path(@parking) %> |
+  <%= link_to "Add Entry Point", new_parking_entry_point_path(@parking) %> |
   <%= link_to "Back to parkings", parkings_path %>
-
-  <%= button_to "Destroy this parking", @parking, method: :delete %>
 </div>
+
+<div>
+  <p>Entry Points</p>
+  <ul>
+    <% @parking.entry_points.each do |entry_point| %>
+      <li>
+        <%= entry_point.number %> |
+        <%= link_to "edit", edit_parking_entry_point_path(@parking, entry_point) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<p><%= button_to "Destroy this parking", @parking, method: :delete %></p>
