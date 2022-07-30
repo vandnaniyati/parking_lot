@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_30_164219) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_30_175243) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_30_164219) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "entry_points_spots", force: :cascade do |t|
+    t.integer "entry_point_id"
+    t.integer "spot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entry_point_id", "spot_id"], name: "index_entry_points_spots_on_entry_point_id_and_spot_id"
+    t.index ["spot_id"], name: "index_entry_points_spots_on_spot_id"
+  end
+
   create_table "parkings", force: :cascade do |t|
     t.string "name"
     t.string "number"
@@ -28,6 +37,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_30_164219) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["number"], name: "index_parkings_on_number", unique: true
+  end
+
+  create_table "spots", force: :cascade do |t|
+    t.string "number"
+    t.integer "parking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parking_id"], name: "index_spots_on_parking_id"
   end
 
 end

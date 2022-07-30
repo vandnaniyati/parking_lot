@@ -5,8 +5,11 @@
 <div>
   <%= link_to "Edit this parking", edit_parking_path(@parking) %> |
   <%= link_to "Add Entry Point", new_parking_entry_point_path(@parking) %> |
+  <%= link_to "Add Spot", new_parking_spot_path(@parking) %> |
   <%= link_to "Back to parkings", parkings_path %>
 </div>
+
+<hr>
 
 <div>
   <% if @parking.entry_points.present? %>
@@ -24,4 +27,24 @@
   <% end %>
 </div>
 
-<p><%= button_to "Destroy this parking", @parking, method: :delete %></p>
+<hr>
+
+<div>
+  <%= link_to "Add Spot", new_parking_spot_path(@parking) %>
+  <% if @parking.spots.present? %>
+    <p>Spots</p>
+    <ul>
+      <% @parking.spots.each do |spot| %>
+        <li>
+          <%= spot.number %> |
+          <%= link_to "edit", edit_parking_spot_path(@parking, spot) %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+  <p style="color: red;">Please add parking spot here.</p>
+  <% end %>
+</div>
+
+<hr>
+<p><%= button_to "Destroy this parking lot", @parking, method: :delete %></p>
