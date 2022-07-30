@@ -12,13 +12,18 @@
 
   <p>The system should also return some queries such as:</p>
   <ul>
-    <li>Registration numbers of all cars of a particular Color.
+    <li>
+      Registration numbers of all cars of a particular Color.
       <ul><li>@cars = Car.where(color: "red").pluck(:registration_number)</li></ul>
     </li>
-    <li>Ticket number in which a car with a given registration number is placed.
+    <li>
+      Ticket number in which a car with a given registration number is placed.
       <ul><li>Car.where(registration_number: "12312212").last.tickets.first.id</li></ul>
     </li>
-    <li>Ticket numbers of all ticket where a car of a particular color is placed.</li>
+    <li>
+      Ticket numbers of all ticket where a car of a particular color is placed.
+      <ul><li>Ticket.includes(:car).where("cars.color = ?",  "red").references(:cars).pluck(:id)</li></ul>
+    </li>
   </ul>
 
   <p>This should be simple command line utility with minimum these capabilities. They can develop a simple UI instead of CLI based.</p>
