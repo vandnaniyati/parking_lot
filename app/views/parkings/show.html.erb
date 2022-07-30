@@ -9,15 +9,19 @@
 </div>
 
 <div>
-  <p>Entry Points</p>
-  <ul>
-    <% @parking.entry_points.each do |entry_point| %>
-      <li>
-        <%= entry_point.number %> |
-        <%= link_to "edit", edit_parking_entry_point_path(@parking, entry_point) %>
-      </li>
-    <% end %>
-  </ul>
+  <% if @parking.entry_points.present? %>
+    <p>Entry Points</p>
+    <ul>
+      <% @parking.entry_points.each do |entry_point| %>
+        <li>
+          <%= entry_point.number %> |
+          <%= link_to "edit", edit_parking_entry_point_path(@parking, entry_point) %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+  <p style="color: red;">Please add atleast one entry point.</p>
+  <% end %>
 </div>
 
 <p><%= button_to "Destroy this parking", @parking, method: :delete %></p>
