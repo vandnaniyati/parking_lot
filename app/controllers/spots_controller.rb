@@ -47,6 +47,6 @@ class SpotsController < ApplicationController
   end
 
   def spot_params
-    params.require(:spot).permit(:number)
+    params.require(:spot).permit(:number, entry_point_ids: [])
   end
 end

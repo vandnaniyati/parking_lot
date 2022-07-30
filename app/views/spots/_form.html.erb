@@ -15,6 +15,10 @@
     <%= form.label :number, style: "display: block" %>
     <%= form.text_field :number %>
   </div>
+  <div>
+    <%= form.label :entry_point_ids, "Select nearby Entry Points", style: "display: block" %>
+    <%= form.collection_check_boxes :entry_point_ids, @parking.entry_points, :id, :number %>
+  </div>
 
   <div>
     <%= form.submit %>
