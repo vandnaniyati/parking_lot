@@ -1,7 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Cars</h1>
+<%= form_for :search, url: cars_path, method: :get do |form| %>
+  <div>
+    <%= form.label :color, style: "display: block" %>
+    <%= form.text_field :color %>
+  </div>
 
+  <div>
+    <%= form.submit "Search" %>
+  </div>
+<% end %>
+
+<p></p>
 <div id="cars">
   <table>
     <tr>

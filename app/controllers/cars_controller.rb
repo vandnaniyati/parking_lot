@@ -3,7 +3,12 @@ class CarsController < ApplicationController
 
   # GET /cars or /cars.json
   def index
-    @cars = Car.all
+    params[:search] ||= {}
+    if color = params[:search][:color]
+      @cars = Car.where(color: color.strip)
+    else
+      @cars = Car.all
+    end
   end
 
   # GET /cars/1 or /cars/1.json

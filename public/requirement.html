@@ -12,7 +12,9 @@
 
   <p>The system should also return some queries such as:</p>
   <ul>
-    <li>Registration numbers of all cars of a particular Color.</li>
+    <li>Registration numbers of all cars of a particular Color.
+      <ul><li>@cars = Car.where(color: "red").pluck(:registration_number)</li></ul>
+    </li>
     <li>Ticket number in which a car with a given registration number is placed.</li>
     <li>Ticket numbers of all ticket where a car of a particular color is placed.</li>
   </ul>
