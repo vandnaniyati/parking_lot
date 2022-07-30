@@ -3,10 +3,28 @@
 <h1>Tickets</h1>
 
 <div id="tickets">
-  <% @tickets.each do |ticket| %>
-    <%= render ticket %>
-    <p>
-      <%= link_to "Show this ticket", ticket %>
-    </p>
-  <% end %>
+  <table>
+    <tr>
+      <th>Ticket Number</th>
+      <th>Car R.No.</th>
+      <th>Car Color</th>
+      <th>Parking</th>
+      <th>Entry</th>
+      <th>Spot</th>
+      <th></th>
+    </tr>
+    <% @tickets.each do |ticket| %>
+    <tr id="<%= dom_id ticket %>">
+      <td><%= ticket.id %></td>
+      <td><%= ticket.car.registration_number %></td>
+      <td><%= ticket.car.color %></td>
+      <td><%= ticket.parking.name %></td>
+      <td><%= ticket.entry_point.number %></td>
+      <td><%= ticket.spot.number %></td>
+      <td>
+        <%= link_to "Show this ticket", ticket %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
 </div>

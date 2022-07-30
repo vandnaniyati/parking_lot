@@ -11,7 +11,6 @@
     </div>
   <% end %>
 
-
   <div>
     <%= form.label :entry_point_id, "Select Entry Point", style: "display: block" %>
     <%= form.select :entry_point_id, options_from_collection_for_select(@parking.entry_points, :id, :number) %>
@@ -23,7 +22,7 @@
   </div>
 
   <div>
-    <%= form.fields_for :car_attributes do |cf| %>
+    <%= form.fields_for :car do |cf| %>
       <div>
         <%= cf.label :registration_number, style: "display: block" %>
         <%= cf.text_field :registration_number %>

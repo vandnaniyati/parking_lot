@@ -3,12 +3,20 @@
 <h1>Cars</h1>
 
 <div id="cars">
-  <% @cars.each do |car| %>
-    <%= render car %>
-    <p>
-      <%= link_to "Show this car", car %>
-    </p>
-  <% end %>
+  <table>
+    <tr>
+      <th>Registration. No.</th>
+      <th>Color</th>
+      <th></th>
+    </tr>
+    <% @cars.each do |car| %>
+      <tr>
+        <td><%= car.registration_number %></td>
+        <td><%= car.color %></td>
+        <td><%= link_to "Show", car %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
-<%= link_to "New car", new_car_path %>
+<%#= link_to "New car", new_car_path %>

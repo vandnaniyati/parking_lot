@@ -7,6 +7,6 @@ Rails.application.routes.draw do
     resources :tickets, only: [:new, :create, :edit, :update]
   end
 
-  resources :cars
+  resources :cars, only: [:index, :show]
   resources :tickets, only: [:index, :show]
 end

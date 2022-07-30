@@ -1,2 +1,7 @@
 <div id="<%= dom_id ticket %>">
+  <p><b>Ticket Number:</b> <%= ticket.id %></p>
+  <p><b>Car:</b> <%= ticket.car&.registration_number %></p>
+  <p><b>Parking Lot: </b> <%= ticket.parking.name %></p>
+  <p><b>Entry:</b> <%= ticket.entry_point.number %></p>
+  <p><b>Spot:</b> <%= ticket.spot.number %></p>
 </div>
