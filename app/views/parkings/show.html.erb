@@ -6,6 +6,7 @@
   <%= link_to "Edit this parking", edit_parking_path(@parking) %> |
   <%= link_to "Add Entry Point", new_parking_entry_point_path(@parking) %> |
   <%= link_to "Add Spot", new_parking_spot_path(@parking) %> |
+  <%= link_to "New ticket", new_parking_ticket_path(@parking), style: "color: red;" %> |
   <%= link_to "Back to parkings", parkings_path %>
 </div>
 

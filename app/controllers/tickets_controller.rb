@@ -12,7 +12,9 @@ class TicketsController < ApplicationController
 
   # GET /tickets/new
   def new
-    @ticket = Ticket.new
+    @parking = Parking.find(params[:parking_id])
+    @ticket = @parking.tickets.new
+    @ticket.build_car
   end
 
   # GET /tickets/1/edit
@@ -21,7 +23,8 @@ class TicketsController < ApplicationController
 
   # POST /tickets or /tickets.json
   def create
-    @ticket = Ticket.new(ticket_params)
+    @parking = Parking.find(params[:parking_id])
+    @ticket = @parking.tickets.new(ticket_params)
 
     respond_to do |format|
       if @ticket.save
@@ -61,10 +64,11 @@ class TicketsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket
       @ticket = Ticket.find(params[:id])
+      @parking = @ticket.parking
     end
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.fetch(:ticket, {})
+      params.require(:ticket).permit(:entry_point_id, :spot_id, car_attributes: [:id, :color, :registration_number])
     end
 end
